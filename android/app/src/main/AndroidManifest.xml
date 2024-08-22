@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
-        android:label="ecommerce_application"
+        android:label="Shop Breeze"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

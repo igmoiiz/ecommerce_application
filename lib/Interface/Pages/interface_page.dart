@@ -105,21 +105,18 @@ class _InterfacePageState extends State<InterfacePage> {
                           const SliverSimpleGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2),
                       itemBuilder: (context, index) {
-                        return Expanded(
-                          child: CategoryContainer(
-                            imageUrl: value.listCategory[index][0],
-                            text: value.listCategory[index][1],
-                            onTap: () {
-                              Navigator.of(context).push(
-                                CupertinoPageRoute(
-                                  builder: (context) => CategoryDetails(
-                                    collectionName2: value.listCategory[index]
-                                        [2],
-                                  ),
+                        return CategoryContainer(
+                          imageUrl: value.listCategory[index][0],
+                          text: value.listCategory[index][1],
+                          onTap: () {
+                            Navigator.of(context).push(
+                              CupertinoPageRoute(
+                                builder: (context) => CategoryDetails(
+                                  collectionName2: value.listCategory[index][2],
                                 ),
-                              );
-                            },
-                          ),
+                              ),
+                            );
+                          },
                         );
                       },
                     ),
