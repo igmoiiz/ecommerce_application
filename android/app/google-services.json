@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "860566341448",
+    "project_id": "shop-breeze",
+    "storage_bucket": "shop-breeze.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860566341448:android:ee0188b7ec9b03a9cad57d",
+        "android_client_info": {
+          "package_name": "com.example.ecommerce_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOxZVAMq3WzxnzlY461hm_nCUF9VAA3dM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
