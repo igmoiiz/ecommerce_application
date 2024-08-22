@@ -28,10 +28,19 @@ class CategoryContainer extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.bottomCenter,
-              child: Text(
-                text.toUpperCase(),
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              child: Container(
+                width: double.infinity,
+                color: Colors.black.withOpacity(0.6),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: Text(
+                      text.toUpperCase(),
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
               ),
             ),
           ],

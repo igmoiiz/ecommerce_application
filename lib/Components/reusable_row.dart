@@ -16,14 +16,14 @@ class ReusableRow extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                  color: Colors.grey.shade300,
+                  color: Theme.of(context).colorScheme.primary,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 value,
-                style: const TextStyle(
-                  color: Colors.white,
+                style: TextStyle(
+                  color: Colors.grey.shade600,
                   fontWeight: FontWeight.bold,
                 ),
               ),

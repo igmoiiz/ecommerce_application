@@ -80,6 +80,7 @@ flutter:
     - Assets/football shoes.jpg
     - Assets/gym wear.jpg
     - Assets/heels.jpg
+    - Assets/splash.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

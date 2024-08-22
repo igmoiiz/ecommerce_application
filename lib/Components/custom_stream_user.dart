@@ -70,7 +70,11 @@ class CustomStreamUser extends StatelessWidget {
                             value: snapshot.data!.docs[index]['brand'],
                           ),
                           ReusableRow(
-                            title: 'Price in RS.',
+                            title: 'Quality',
+                            value: snapshot.data!.docs[index]['material'],
+                          ),
+                          ReusableRow(
+                            title: 'RS.',
                             value: snapshot.data!.docs[index]['price'],
                           ),
                           SizedBox(
