@@ -96,37 +96,40 @@ class _InterfacePageState extends State<InterfacePage> {
                 ),
               ),
               SizedBox(height: size.height * 0.02),
-              Consumer<CategoriesServices>(
-                builder: (context, value, child) {
-                  return Expanded(
-                    child: MasonryGridView.builder(
-                      itemCount: value.items.length,
-                      gridDelegate:
-                          const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2),
-                      itemBuilder: (context, index) {
-                        return CategoryContainer(
-                          imageUrl: value.listCategory[index][0],
-                          text: value.listCategory[index][1],
-                          onTap: () {
-                            Navigator.of(context).push(
-                              CupertinoPageRoute(
-                                builder: (context) => CategoryDetails(
-                                  collectionName2: value.listCategory[index][2],
-                                ),
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  );
-                },
-              ),
+              _categoryDisplay(),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _categoryDisplay() {
+    return Consumer<CategoriesServices>(
+      builder: (context, value, child) {
+        return Expanded(
+          child: MasonryGridView.builder(
+            itemCount: value.items.length,
+            gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2),
+            itemBuilder: (context, index) {
+              return CategoryContainer(
+                imageUrl: value.listCategory[index][0],
+                text: value.listCategory[index][1],
+                onTap: () {
+                  Navigator.of(context).push(
+                    CupertinoPageRoute(
+                      builder: (context) => CategoryDetails(
+                        collectionName2: value.listCategory[index][2],
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
+          ),
+        );
+      },
     );
   }
 }
