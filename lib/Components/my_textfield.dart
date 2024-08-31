@@ -8,12 +8,14 @@ class MyTextfield extends StatelessWidget {
   final bool obscure;
   final TextEditingController controller;
   var suffixIcon;
+  var inputType;
   MyTextfield({
     super.key,
     required this.labelText,
     required this.obscure,
     required this.controller,
     required this.suffixIcon,
+    this.inputType,
   });
 
   @override
@@ -21,6 +23,7 @@ class MyTextfield extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 16, right: 12, left: 12),
       child: TextFormField(
+        keyboardType: inputType,
         validator: (value) {
           if (value!.isEmpty) {
             return 'This Field can\'t be empty';

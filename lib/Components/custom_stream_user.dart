@@ -1,11 +1,11 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:ecommerce_application/Categories/categories_services.dart';
-import 'package:ecommerce_application/Components/cart_button.dart';
+import 'package:ecommerce_application/Components/network_image_widget.dart';
 
-import 'package:ecommerce_application/Components/reusable_row.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:persistent_shopping_cart/model/cart_model.dart';
+import 'package:persistent_shopping_cart/persistent_shopping_cart.dart';
 import 'package:provider/provider.dart';
 
 class CustomStreamUser extends StatelessWidget {
@@ -40,49 +40,134 @@ class CustomStreamUser extends StatelessWidget {
             }
             //  returning list view builder
             return Expanded(
-              child: MasonryGridView.builder(
-                gridDelegate:
-                    const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2),
+              child: ListView.builder(
                 itemCount: snapshot.data!.docs.length,
                 itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: onTap,
-                    child: Card(
-                      color: Theme.of(context).colorScheme.surface,
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(18.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(18),
-                              child: Image(
-                                image: NetworkImage(
-                                  snapshot.data!.docs[index]['imageUrl'],
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                NetworkImageWidget(
+                                  imageUrl: snapshot.data!.docs[index]
+                                      ['imageUrl'],
+                                  height: 100,
+                                  width: 100,
+                                  borderRadius: 8,
                                 ),
-                              ),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.03,
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        snapshot.data!.docs[index]['brand'],
+                                        style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onPrimary,
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: .5,
+                                          fontSize: 19,
+                                        ),
+                                      ),
+                                      Text(
+                                        snapshot.data!.docs[index]
+                                            ['description'],
+                                        style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .surface,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Rs. ${snapshot.data!.docs[index]['price']}',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 17,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .surface,
+                                        ),
+                                      ),
+                                      PersistentShoppingCart()
+                                          .showAndUpdateCartItemWidget(
+                                        notInCartWidget: Container(
+                                          height: 30,
+                                          width: 80,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            border: Border.all(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .inversePrimary,
+                                            ),
+                                          ),
+                                          child: const Center(
+                                            child: Text('Add to Cart',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                )),
+                                          ),
+                                        ),
+                                        inCartWidget: Container(
+                                          height: 30,
+                                          width: 80,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            border: Border.all(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .inversePrimary,
+                                            ),
+                                          ),
+                                          child: const Center(
+                                            child: Text('Remove',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                )),
+                                          ),
+                                        ),
+                                        product: PersistentShoppingCartItem(
+                                            productId: snapshot
+                                                .data!.docs[index]['id'],
+                                            productName: snapshot
+                                                .data!.docs[index]['brand'],
+                                            unitPrice: double.parse(snapshot
+                                                .data!.docs[index]['price']
+                                                .toString()),
+                                            productThumbnail: snapshot
+                                                .data!.docs[index]['imageUrl'],
+
+                                                
+                                            quantity: 1,
+                                            productDescription: snapshot.data!
+                                                .docs[index]['description']),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          SizedBox(
-                              height: MediaQuery.of(context).size.height * .01),
-                          ReusableRow(
-                            title: 'Brand Name',
-                            value: snapshot.data!.docs[index]['brand'],
-                          ),
-                          ReusableRow(
-                            title: 'Quality',
-                            value: snapshot.data!.docs[index]['material'],
-                          ),
-                          ReusableRow(
-                            title: 'RS.',
-                            value: snapshot.data!.docs[index]['price'],
-                          ),
-                          SizedBox(
-                              height: MediaQuery.of(context).size.height * .01),
-                          CartButton(
-                            onTap: () {},
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   );

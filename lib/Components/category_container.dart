@@ -36,8 +36,11 @@ class CategoryContainer extends StatelessWidget {
                     padding: const EdgeInsets.all(2.0),
                     child: Text(
                       text.toUpperCase(),
-                      style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.onPrimary,
+                      ),
                     ),
                   ),
                 ),

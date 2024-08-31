@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   useMaterial3: true,
-  fontFamily: GoogleFonts.montserrat().fontFamily,
+  fontFamily: GoogleFonts.urbanist().fontFamily,
   colorScheme: ColorScheme.light(
     primary: const Color(0xFF673AB7), // Purple
     secondary: const Color(0xFFF50057), // Pink
@@ -24,7 +24,7 @@ ThemeData lightMode = ThemeData(
 ThemeData darkMode = ThemeData(
   useMaterial3: true,
   brightness: Brightness.dark,
-  fontFamily: GoogleFonts.montaga().fontFamily,
+  fontFamily: GoogleFonts.outfit().fontFamily,
   colorScheme: const ColorScheme.dark(
     primary: Color(0xFFD81B60), // Dark Pink
     secondary: Color(0xFF00BCD4), // Light Blue

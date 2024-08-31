@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:ecommerce_application/Cart%20Page/cart.dart';
 import 'package:ecommerce_application/Categories/categories_services.dart';
 import 'package:ecommerce_application/Categories/category_details.dart';
 import 'package:ecommerce_application/Components/category_container.dart';
@@ -46,6 +47,16 @@ class _InterfacePageState extends State<InterfacePage> {
               children: [
                 const Spacer(),
                 const Divider(),
+                ListTile(
+                  onTap: (){
+                    Navigator.of(context).push(CupertinoPageRoute(builder: (context) => const CartPage()));
+                  },
+                  title: const Text('Shopping Cart'),
+                  leading: Icon(
+                    Icons.shopping_cart_outlined,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
                 ListTile(
                   onTap: () async {
                     try {
